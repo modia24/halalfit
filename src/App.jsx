@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const PRODUCTS = [
@@ -633,7 +633,7 @@ const PriceAlertPanel=({alerts,setAlerts,quickAlertProduct,clearQuickAlert,lang}
   const [saved,setSaved]=useState(false);
   const [triggered,setTriggered]=useState([]);
 
-  useEffect(()=>{if(quickAlertProduct){setSelProduct(quickAlertProduct);setStep("new");clearQuickAlert();}},[quickAlertProduct]);
+  useEffect(()=>{if(quickAlertProduct){setSelProduct(quickAlertProduct);setStep("new");clearQuickAlert();}},[quickAlertProduct, clearQuickAlert]);
   useEffect(()=>{
     if(alerts.length===0)return;
     const t=setTimeout(()=>{
@@ -1189,6 +1189,7 @@ export default function HalalFitDE(){
   const toggleCompare=(id)=>setCompareList(prev=>prev.includes(id)?prev.filter(x=>x!==id):prev.length<3?[...prev,id]:prev);
   const toggleWish=(id)=>setWishlist(prev=>prev.includes(id)?prev.filter(x=>x!==id):[...prev,id]);
   const handleQuickAlert=(p)=>{setQuickAlertProduct(p);setTab("alerts");};
+  const clearQuickAlert = useCallback(()=>setQuickAlertProduct(null), []);
   const handleViewProduct=(p)=>{setSelected(p);setTab("products");};
 
   const filtered=PRODUCTS.filter(p=>{
@@ -1329,7 +1330,7 @@ export default function HalalFitDE(){
         {tab==="calc"&&<NutritionCalc lang={lang}/>}
         {tab==="checker"&&<IngredientChecker lang={lang}/>}
         {tab==="compare"&&<ComparePanel compareIds={compareList} onRemove={id=>setCompareList(prev=>prev.filter(x=>x!==id))} lang={lang}/>}
-        {tab==="alerts"&&<PriceAlertPanel alerts={alerts} setAlerts={setAlerts} quickAlertProduct={quickAlertProduct} clearQuickAlert={()=>setQuickAlertProduct(null)} lang={lang}/>}
+        {tab==="alerts"&&<PriceAlertPanel alerts={alerts} setAlerts={setAlerts} quickAlertProduct={quickAlertProduct} clearQuickAlert={clearQuickAlert} lang={lang}/> }
         {tab==="wishlist"&&<Wishlist wishlist={wishlist} onToggleWish={toggleWish} onViewProduct={handleViewProduct} lang={lang}/>}
         {tab==="affiliate"&&<AffiliateTracker lang={lang}/>}
         {tab==="submit"&&<SubmitForm lang={lang}/>}
