@@ -1,0 +1,26 @@
+{
+  "short_name": "HalalFit",
+  "name": "HalalFit Deutschland",
+  "description": "Alle halal-zertifizierten Supplements auf einen Blick",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#080808",
+  "background_color": "#080808",
+  "categories": ["health", "fitness", "food"],
+  "lang": "de"
+}
