@@ -314,7 +314,7 @@ const Quiz=({setTab,setSearch,lang})=>{
         if(a.level==="beginner"&&p.category==="Whey Protein")score+=1;
         if(a.level==="advanced"&&p.category==="Creatine")score+=1;
         return{...p,score};
-      }).sort((a,b)=>b.score-a.score).slice(0,4);
+      }).sort((a)=>a.score).slice(0,4);
       setResults(scored);
     }
   };
