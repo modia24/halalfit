@@ -1115,7 +1115,7 @@ const SubmitForm=({lang})=>{
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px"}}>
           <div>
             <div style={{fontSize:"10px",color:"#444",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"5px"}}>{T("Produktname *","Product Name *",lang)}</div>
-            <input value={form.name} onChange={e=>set("name",e.target.value)} onBlur={getAiTip} placeholder="z.B. Designer Whey" style={inputS} onFocus={e=>e.target.style.borderColor=gold} onBlur={e=>{getAiTip();e.target.style.borderColor="#222";}}/>
+            <input value={form.name} onChange={e=>set("name",e.target.value)} placeholder="z.B. Designer Whey" style={inputS} onFocus={e=>e.target.style.borderColor=gold} onBlur={e=>{getAiTip();e.target.style.borderColor="#222";}}/>
           </div>
           <div>
             <div style={{fontSize:"10px",color:"#444",letterSpacing:"1px",textTransform:"uppercase",marginBottom:"5px"}}>{T("Marke *","Brand *",lang)}</div>
@@ -1182,7 +1182,6 @@ export default function HalalFitDE(){
   const [quickAlertProduct,setQuickAlertProduct]=useState(null);
   const [userReviews,setUserReviews]=useState(INITIAL_REVIEWS);
   const [loaded,setLoaded]=useState(false);
-  const [menuOpen,setMenuOpen]=useState(false);
 
   useEffect(()=>{setTimeout(()=>setLoaded(true),80);},[]);
 
